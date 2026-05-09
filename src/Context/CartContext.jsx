@@ -4,8 +4,8 @@ const CartContext = createContext(null);
 
 export const CartProvider = ({ children }) => {
     const [cartItems, setCartItems] = useState(() => {
-        const savedCart = localStorage.getItem('grihostho-cart');
-        return savedCart ? JSON.parse(savedCart) : [];
+        const saved = localStorage.getItem('grihostho-cart');
+        return saved ? JSON.parse(saved) : [];
     });
 
     useEffect(() => {
@@ -13,39 +13,50 @@ export const CartProvider = ({ children }) => {
     }, [cartItems]);
 
     const addToCart = (item) => {
-        setCartItems((currentItems) => {
-            const existingItem = currentItems.find((cartItem) => cartItem.id === item.id);
+        setCartItems((prev) => {
+            const existing = prev.find((p) => p.id === item.id);
 
-            if (existingItem) {
-                return currentItems.map((cartItem) =>
-                    cartItem.id === item.id
-                        ? { ...cartItem, quantity: cartItem.quantity + item.quantity }
-                        : cartItem
+            if (existing) {
+                return prev.map((p) =>
+                    p.id === item.id
+                        ? { ...p, quantity: p.quantity + item.quantity }
+                        : p
                 );
             }
 
-            return [...currentItems, item];
+            return [
+                ...prev,
+                {
+                    ...item,
+                    image: item.image || "", // ✅ safety fix
+                },
+            ];
         });
     };
 
     const updateQuantity = (id, quantity) => {
-        setCartItems((currentItems) =>
-            currentItems
-                .map((item) => (item.id === id ? { ...item, quantity: Math.max(1, quantity) } : item))
-                .filter((item) => item.quantity > 0)
+        setCartItems((prev) =>
+            prev
+                .map((item) =>
+                    item.id === id
+                        ? { ...item, quantity: Math.max(1, quantity) }
+                        : item
+                )
         );
     };
 
     const removeFromCart = (id) => {
-        setCartItems((currentItems) => currentItems.filter((item) => item.id !== id));
+        setCartItems((prev) => prev.filter((item) => item.id !== id));
     };
 
-    const clearCart = () => {
-        setCartItems([]);
-    };
+    const clearCart = () => setCartItems([]);
 
-    const cartCount = cartItems.reduce((total, item) => total + item.quantity, 0);
-    const cartTotal = cartItems.reduce((total, item) => total + item.price * item.quantity, 0);
+    const cartCount = cartItems.reduce((sum, i) => sum + i.quantity, 0);
+
+    const cartTotal = cartItems.reduce(
+        (sum, i) => sum + i.price * i.quantity,
+        0
+    );
 
     const value = useMemo(
         () => ({
@@ -64,11 +75,7 @@ export const CartProvider = ({ children }) => {
 };
 
 export const useCart = () => {
-    const context = useContext(CartContext);
-
-    if (!context) {
-        throw new Error('useCart must be used inside CartProvider');
-    }
-
-    return context;
+    const ctx = useContext(CartContext);
+    if (!ctx) throw new Error("useCart must be used inside CartProvider");
+    return ctx;
 };
