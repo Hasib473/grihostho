@@ -204,7 +204,7 @@ const Navbar = () => {
                         {topActions.map(({ label, icon: Icon }) => (
                             <Link
                                 key={label}
-                                to={label === 'Cart' ? '/cart' : '/'}
+                                to={label === 'Cart' ? '/cart' : label === 'Sign In' ? '/signin' : '/'}
                                 className="group flex min-w-0 flex-col items-center justify-end text-center text-[10px] font-normal leading-tight transition hover:text-[#f58220] sm:text-xs md:text-sm lg:text-base"
                             >
                                 <span className="relative leading-none">

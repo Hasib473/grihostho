@@ -1,4 +1,9 @@
 import organichoney from '../assets/Honey/organic honey.png';
+import sundarbanhoney from '../assets/Honey/sundarban honey.png';
+import ajwadates from '../assets/dates/ajwa dates.png';
+import medjooldates from '../assets/dates/medjol dates.png';
+import Himsagarmango from '../assets/Mango/Himsagar Mango.png';
+import langramango from '../assets/Mango/langra Mango.png'
 export const slugify = (value) =>
     value
         .toLowerCase()
@@ -27,7 +32,7 @@ export const navItems = [
             { title: 'Organic Honey', image: organichoney },
             { title: 'Black Seed Honey', image: '/images/black-seed-honey.jpg' },
             { title: 'Mustard Flower Honey', image: '/images/mustard-flower-honey.jpg' },
-            { title: 'Sundarban Honey', image: '/images/sundarban-honey.jpg' },
+            { title: 'Sundarban Honey', image: sundarbanhoney },
             { title: 'Litchi Flower Honey', image: '/images/litchi-flower-honey.jpg' },
             { title: 'Raw Honey', image: '/images/raw-honey.jpg' },
         ]
@@ -36,9 +41,9 @@ export const navItems = [
     {
         label: 'Dates',
         products: [
-            { title: 'Medjool Dates', image: '/images/medjool-dates.jpg' },
+            { title: 'Medjool Dates', image: medjooldates },
             { title: 'Mabroom Dates', image: '/images/mabroom-dates.jpg' },
-            { title: 'Ajwa Dates', image: '/images/ajwa-dates.jpg' },
+            { title: 'Ajwa Dates', image: ajwadates },
             { title: 'Sukkari Dates', image: '/images/sukkari-dates.jpg' },
             { title: 'Maryam Dates', image: '/images/maryam-dates.jpg' },
             { title: 'Dates Powder', image: '/images/dates-powder.jpg' },
@@ -60,8 +65,8 @@ export const navItems = [
     {
         label: 'Mango',
         products: [
-            { title: 'Himsagar Mango', image: '/images/himsagar-mango.jpg' },
-            { title: 'Langra Mango', image: '/images/langra-mango.jpg' },
+            { title: 'Himsagar Mango', image: Himsagarmango },
+            { title: 'Langra Mango', image: langramango },
             { title: 'Amrapali Mango', image: '/images/amrapali-mango.jpg' },
             { title: 'Haribhanga Mango', image: '/images/haribhanga-mango.jpg' },
             { title: 'Fazli Mango', image: '/images/fazli-mango.jpg' },

@@ -1,9 +1,13 @@
 import { useState, useEffect, useRef } from "react";
-import honey from '../../assets/Honey/organic honey.png'
-import dates from '../../assets/dates/dates.jfif'
-import nuts from '../../assets/Nuts/nutsimg.jfif'
-import spices from '../../assets/Spices/spices.jfif'
-import mango from '../../assets/Mango/mango.jfif'
+import { Link } from "react-router";
+
+import honey from "../../assets/Honey/organic honey.png";
+import dates from "../../assets/dates/dates.jfif";
+import nuts from "../../assets/Nuts/nutsimg.jfif";
+import spices from "../../assets/Spices/spices.jfif";
+import mango from "../../assets/Mango/mango.jfif";
+
+import { slugify } from "../../data/navigation";
 
 // ─────────────────────────────────────────────
 // CATEGORY IMAGES
@@ -90,8 +94,12 @@ const INTERVAL = 2500;
 
 export default function Product() {
   const [startIndex, setStartIndex] = useState(0);
-  const [hoveredIndex, setHoveredIndex] = useState(null);
-  const [visibleCount, setVisibleCount] = useState(7);
+
+  const [hoveredIndex, setHoveredIndex] =
+    useState(null);
+
+  const [visibleCount, setVisibleCount] =
+    useState(7);
 
   const intervalRef = useRef(null);
 
@@ -186,8 +194,8 @@ export default function Product() {
       }}
     >
       {/* HEADER */}
-      <div className="mb-8 text-center">
 
+      <div className="mb-8 text-center">
         <p className="mb-1 text-[11px] font-semibold uppercase tracking-[0.25em] text-amber-500 sm:text-xs">
           Shop By
         </p>
@@ -206,9 +214,10 @@ export default function Product() {
       </div>
 
       {/* SLIDER */}
-      <div className="relative mx-auto flex max-w-[1200px] items-center gap-2 sm:gap-3">
 
+      <div className="relative mx-auto flex max-w-[1200px] items-center gap-2 sm:gap-3">
         {/* LEFT BUTTON */}
+
         <button
           onClick={prevSlide}
           className="
@@ -236,13 +245,13 @@ export default function Product() {
         </button>
 
         {/* CARDS */}
+
         <div className="flex-1 overflow-hidden">
-
           <div className="grid grid-cols-2 gap-2 sm:grid-cols-3 md:grid-cols-5 lg:grid-cols-7 sm:gap-3">
-
             {visibleItems.map((cat, index) => (
-              <div
+              <Link
                 key={index}
+                to={`/category/${slugify(cat.name)}`}
                 onMouseEnter={() =>
                   setHoveredIndex(index)
                 }
@@ -290,13 +299,14 @@ export default function Product() {
                       : "0 3px 10px rgba(0,0,0,0.05)",
                 }}
               >
-
                 {/* ACCENT DOT */}
+
                 <div
                   className={`absolute right-2.5 top-2.5 h-2 w-2 rounded-full ${cat.accent}`}
                 />
 
                 {/* IMAGE */}
+
                 <div
                   className="mb-3 transition-all duration-300"
                   style={{
@@ -328,6 +338,7 @@ export default function Product() {
                 </div>
 
                 {/* NAME */}
+
                 <h3
                   className="
                     text-center
@@ -346,6 +357,7 @@ export default function Product() {
                 </h3>
 
                 {/* UNDERLINE */}
+
                 <div
                   className={`
                     mt-2
@@ -362,12 +374,13 @@ export default function Product() {
                         : "0%",
                   }}
                 />
-              </div>
+              </Link>
             ))}
           </div>
         </div>
 
         {/* RIGHT BUTTON */}
+
         <button
           onClick={nextSlide}
           className="
@@ -396,8 +409,8 @@ export default function Product() {
       </div>
 
       {/* DOTS */}
-      <div className="mt-6 flex justify-center gap-1.5">
 
+      <div className="mt-6 flex justify-center gap-1.5">
         {categories.map((_, i) => (
           <button
             key={i}

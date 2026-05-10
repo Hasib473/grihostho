@@ -74,6 +74,7 @@ const CheckoutPage = () => {
 
     return (
         <main className="mx-auto max-w-[1760px] px-3 py-6 sm:px-6 sm:py-10 lg:px-10">
+
             <div className="rounded-lg bg-[#fff8f1] px-4 py-6 sm:px-8 sm:py-8">
                 <p className="text-sm font-semibold uppercase tracking-wide text-[#f58220]">Secure Checkout</p>
                 <h1 className="mt-2 text-2xl font-black text-[#07162b] sm:text-4xl">Checkout</h1>
@@ -81,18 +82,23 @@ const CheckoutPage = () => {
             </div>
 
             <form onSubmit={handleSubmit} className="mt-8 grid gap-6 lg:grid-cols-[minmax(0,1fr)_390px]">
+
                 <div className="space-y-6">
+
                     <section className="rounded-lg border border-slate-200 bg-white p-4 shadow-sm sm:p-5">
                         <h2 className="text-xl font-bold text-[#07162b]">Customer Information</h2>
+
                         <div className="mt-5 grid gap-4 sm:grid-cols-2">
                             <label className="block">
                                 <span className="text-sm font-semibold text-slate-700">Full Name *</span>
                                 <input name="fullName" value={formData.fullName} onChange={handleChange} required className="mt-2 h-11 w-full rounded-md border border-slate-300 px-3 outline-none transition focus:border-[#f58220]" />
                             </label>
+
                             <label className="block">
                                 <span className="text-sm font-semibold text-slate-700">Phone Number *</span>
                                 <input name="phone" value={formData.phone} onChange={handleChange} required className="mt-2 h-11 w-full rounded-md border border-slate-300 px-3 outline-none transition focus:border-[#f58220]" />
                             </label>
+
                             <label className="block sm:col-span-2">
                                 <span className="text-sm font-semibold text-slate-700">Email Address</span>
                                 <input type="email" name="email" value={formData.email} onChange={handleChange} className="mt-2 h-11 w-full rounded-md border border-slate-300 px-3 outline-none transition focus:border-[#f58220]" />
@@ -102,6 +108,7 @@ const CheckoutPage = () => {
 
                     <section className="rounded-lg border border-slate-200 bg-white p-4 shadow-sm sm:p-5">
                         <h2 className="text-xl font-bold text-[#07162b]">Delivery Method</h2>
+
                         <div className="mt-5 grid gap-3 sm:grid-cols-2">
                             {[
                                 { value: 'home', title: 'Home Delivery', text: 'Courier delivery to your address' },
@@ -125,10 +132,12 @@ const CheckoutPage = () => {
                                         ))}
                                     </select>
                                 </label>
+
                                 <label className="block">
                                     <span className="text-sm font-semibold text-slate-700">Area / Thana *</span>
                                     <input name="area" value={formData.area} onChange={handleChange} required className="mt-2 h-11 w-full rounded-md border border-slate-300 px-3 outline-none transition focus:border-[#f58220]" />
                                 </label>
+
                                 <label className="block sm:col-span-2">
                                     <span className="text-sm font-semibold text-slate-700">Full Address *</span>
                                     <textarea name="address" value={formData.address} onChange={handleChange} required rows="3" className="mt-2 w-full rounded-md border border-slate-300 px-3 py-2 outline-none transition focus:border-[#f58220]" />
@@ -147,23 +156,20 @@ const CheckoutPage = () => {
 
                         <label className="mt-5 block">
                             <span className="text-sm font-semibold text-slate-700">Order Note</span>
-                            <textarea name="note" value={formData.note} onChange={handleChange} rows="3" placeholder="Any special instruction for delivery..." className="mt-2 w-full rounded-md border border-slate-300 px-3 py-2 outline-none transition focus:border-[#f58220]" />
+                            <textarea name="note" value={formData.note} onChange={handleChange} rows="3" className="mt-2 w-full rounded-md border border-slate-300 px-3 py-2 outline-none transition focus:border-[#f58220]" />
                         </label>
                     </section>
 
                     <section className="rounded-lg border border-slate-200 bg-white p-4 shadow-sm sm:p-5">
                         <h2 className="text-xl font-bold text-[#07162b]">Payment Method</h2>
+
                         <div className="mt-5 grid gap-3">
                             <label className={`cursor-pointer rounded-lg border p-4 transition ${paymentMethod === 'sslcommerz' ? 'border-[#f58220] bg-[#fff4ea]' : 'border-slate-200'}`}>
                                 <input type="radio" name="paymentMethod" value="sslcommerz" checked={paymentMethod === 'sslcommerz'} onChange={() => setPaymentMethod('sslcommerz')} className="sr-only" />
-                                <span className="flex flex-wrap items-center justify-between gap-3">
-                                    <span>
-                                        <span className="block font-bold text-[#07162b]">SSLCommerz Online Payment</span>
-                                        <span className="mt-1 block text-sm text-slate-500">Pay securely using card, mobile banking, or internet banking.</span>
-                                    </span>
-                                    <span className="rounded bg-[#2d5dab] px-3 py-1 text-sm font-bold text-white">SSLCommerz</span>
-                                </span>
+                                <span className="block font-bold text-[#07162b]">SSLCommerz Online Payment</span>
+                                <span className="mt-1 block text-sm text-slate-500">Pay securely using card, mobile banking, or internet banking.</span>
                             </label>
+
                             <label className={`cursor-pointer rounded-lg border p-4 transition ${paymentMethod === 'cod' ? 'border-[#f58220] bg-[#fff4ea]' : 'border-slate-200 hover:border-orange-200'}`}>
                                 <input type="radio" name="paymentMethod" value="cod" checked={paymentMethod === 'cod'} onChange={() => setPaymentMethod('cod')} className="sr-only" />
                                 <span className="block font-bold text-[#07162b]">Cash on Delivery</span>
@@ -173,34 +179,61 @@ const CheckoutPage = () => {
                     </section>
                 </div>
 
+                {/* RIGHT SIDE */}
                 <aside className="h-fit rounded-lg border border-slate-200 bg-white p-4 shadow-sm sm:p-5">
+
                     <h2 className="text-xl font-bold text-[#07162b]">Order Summary</h2>
+
                     <div className="mt-5 max-h-80 space-y-3 overflow-y-auto pr-1">
+
                         {cartItems.map((item) => (
                             <div key={item.id} className="flex gap-3 rounded-md border border-slate-100 p-3">
-                                <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded bg-[#fff4ea] text-sm font-black text-[#f58220]">
-                                    {item.product.split(' ').map((word) => word[0]).join('').slice(0, 3)}
+
+                                {/* ✅ FIXED IMAGE */}
+                                <div className="h-14 w-14 overflow-hidden rounded bg-[#fff4ea] flex items-center justify-center">
+                                    {item.image ? (
+                                        <img
+                                            src={item.image}
+                                            alt={item.product}
+                                            className="h-full w-full object-cover"
+                                        />
+                                    ) : (
+                                        <div className="text-sm font-black text-[#f58220]">
+                                            {item.product
+                                                ?.split(' ')
+                                                .map((w) => w[0])
+                                                .join('')
+                                                .slice(0, 3)}
+                                        </div>
+                                    )}
                                 </div>
+
                                 <div className="min-w-0 flex-1">
                                     <p className="truncate text-sm font-bold text-[#07162b]">{item.product}</p>
                                     <p className="mt-1 text-xs text-slate-500">{item.packageLabel}</p>
                                     <p className="mt-1 text-xs text-slate-500">Qty: {item.quantity}</p>
                                 </div>
-                                <p className="shrink-0 text-sm font-bold text-[#07162b]">Tk {item.price * item.quantity}</p>
+
+                                <p className="shrink-0 text-sm font-bold text-[#07162b]">
+                                    Tk {item.price * item.quantity}
+                                </p>
                             </div>
                         ))}
+
                     </div>
 
-                    <div className="mt-5 space-y-3 border-t border-slate-200 pt-4 text-sm">
-                        <div className="flex justify-between text-slate-600">
-                            <span>Subtotal ({cartCount} items)</span>
-                            <span className="font-semibold text-[#07162b]">Tk {cartTotal}</span>
+                    <div className="mt-5 space-y-3 border-t pt-4 text-sm">
+                        <div className="flex justify-between">
+                            <span>Subtotal</span>
+                            <span>Tk {cartTotal}</span>
                         </div>
-                        <div className="flex justify-between text-slate-600">
+
+                        <div className="flex justify-between">
                             <span>Delivery Fee</span>
-                            <span className="font-semibold text-[#07162b]">Tk {deliveryFee}</span>
+                            <span>Tk {deliveryFee}</span>
                         </div>
-                        <div className="flex justify-between border-t border-slate-200 pt-4 text-lg font-black text-[#07162b]">
+
+                        <div className="flex justify-between text-lg font-black">
                             <span>Total</span>
                             <span>Tk {grandTotal}</span>
                         </div>
@@ -209,9 +242,7 @@ const CheckoutPage = () => {
                     <button type="submit" className="mt-6 w-full rounded-md bg-[#f58220] px-5 py-3 text-base font-bold text-white shadow-md shadow-orange-500/20 transition hover:-translate-y-0.5 hover:bg-[#e77412] hover:shadow-lg">
                         {paymentMethod === 'sslcommerz' ? 'Pay With SSLCommerz' : 'Place Order'}
                     </button>
-                    <p className="mt-3 text-center text-xs leading-5 text-slate-500">
-                        By placing this order, you agree to our terms, refund policy, and delivery policy.
-                    </p>
+
                 </aside>
             </form>
         </main>

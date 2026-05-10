@@ -6,6 +6,7 @@ import SearchPage from "../Pages/SearchPage";
 import ProductDetailsPage from "../Pages/ProductDetailsPage";
 import CartPage from "../Pages/CartPage";
 import CheckoutPage from "../Pages/CheckoutPage";
+import AuthPage from "../Pages/SignIn";
 
 const router = createBrowserRouter([
 {
@@ -39,6 +40,10 @@ const router = createBrowserRouter([
         {
             path: "product/:categorySlug/:productSlug",
             Component: ProductDetailsPage
+        },
+        {
+            path:'signin',
+            Component: AuthPage
         }
     ]
 }

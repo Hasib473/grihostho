@@ -3,6 +3,8 @@ import Hero from '../Components/Homepage/Hero';
 import Product from '../Components/Homepage/Product';
 import TopProducts from '../Components/Homepage/TopProducts';
 import CustomerFeedback from '../Components/Homepage/CustomerFeedback';
+import HowToOrder from '../Components/Homepage/HowtoOrder';
+import FlashSaleSection from '../Components/Homepage/FlashSaleSection';
 
 const Home = () => {
     return (
@@ -17,6 +19,12 @@ const Home = () => {
 
             <div>
                 <TopProducts/>
+            </div>
+            <div>
+                <FlashSaleSection/>
+            </div>
+            <div>
+                <HowToOrder/>
             </div>
             <div>
                 <CustomerFeedback/>
